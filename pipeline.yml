@@ -21,9 +21,9 @@ jobs:
       trigger: true
     - do:
       #- task: unit-test
-      #  file: repository/concourse/unit-test.yml
+      #  file: repository/tasks/unit-test.yml
       - task: deploy-image
-        file: repository/concourse/deploy-image.yml
+        file: repository/tasks/deploy-image.yml
       - put: springboot-bestpractice-image
         params:
           tag: out/version.txt

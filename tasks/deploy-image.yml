@@ -14,5 +14,5 @@ outputs:
 - name: out
 
 run:
-  path: concourse/deploy-image.sh
+  path: tasks/deploy-image.sh
   dir: repository
