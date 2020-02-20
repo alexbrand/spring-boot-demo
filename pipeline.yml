@@ -1,0 +1,30 @@
+resources:
+  - name: repository
+    type: git
+    source:
+      branch: master
+      uri: git@github.com:alexbrand/spring-boot-demo.git
+
+  - name: springboot-bestpractice-image
+    type: docker-image
+    source:
+      repository: ((docker-hub-account))/springboot-bestpractice
+      username: ((docker-hub-user))
+      password: ((docker-hub-pass))
+
+jobs:
+  - name: deploy-image
+    serial: true
+    public: true
+    plan:
+    - get: repository
+      trigger: true
+    - do:
+      #- task: unit-test
+      #  file: repository/concourse/unit-test.yml
+      - task: deploy-image
+        file: repository/concourse/deploy-image.yml
+      - put: springboot-bestpractice-image
+        params:
+          tag: out/version.txt
+          build: repository
