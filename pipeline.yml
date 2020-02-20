@@ -3,7 +3,7 @@ resources:
     type: git
     source:
       branch: master
-      uri: git@github.com:alexbrand/spring-boot-demo.git
+      uri: https://github.com/alexbrand/spring-boot-demo.git
 
   - name: springboot-bestpractice-image
     type: docker-image
